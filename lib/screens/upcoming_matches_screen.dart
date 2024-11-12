@@ -1,5 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import 'dashboard.dart';
 
 void main() {
   runApp(MyApp());
@@ -166,7 +170,11 @@ class _MatchCardState extends State<MatchCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return  GestureDetector(
+        onTap: () {
+          Get.to(Dashboard());  // Navigate to Dashboard on card tap
+        },
+        child: Container(
       margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
       padding: EdgeInsets.all(16.0),
       decoration: BoxDecoration(
@@ -220,12 +228,12 @@ class _MatchCardState extends State<MatchCard> {
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
                     decoration: BoxDecoration(
-                      color: Colors.red,
+                      color: Colors.red.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(4.0),
                     ),
                     child: Text(
                       formatDuration(timeRemaining),
-                      style: TextStyle(fontSize: 18.0, color: Colors.white),
+                      style: TextStyle(fontSize: 18.0, color: Colors.red,fontWeight: FontWeight.w600),
                     ),
                   ),
                   SizedBox(height: 4.0),
@@ -256,12 +264,12 @@ class _MatchCardState extends State<MatchCard> {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
             decoration: BoxDecoration(
-              color: Colors.yellow,
+              color: Colors.yellow.withOpacity(0.35),
               borderRadius: BorderRadius.circular(4.0),
             ),
             child: Text(
               "Mega ${widget.prizePool}",
-              style: TextStyle(fontWeight: FontWeight.bold, color: Colors.orange),
+              style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black54),
             ),
           ),
           if (widget.playerHighlight != null)
@@ -274,6 +282,7 @@ class _MatchCardState extends State<MatchCard> {
             ),
         ],
       ),
+    )
     );
   }
 }

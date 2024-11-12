@@ -31,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
       splash: "assets/logo.png",
       splashIconSize: screenWidth*0.5,
       screenFunction: () async {
-          return  UpcomingMatchesScreen();
+          return UpcomingMatchesScreen();
         },
       splashTransition: SplashTransition.fadeTransition,
       pageTransitionType: PageTransitionType.fade,
